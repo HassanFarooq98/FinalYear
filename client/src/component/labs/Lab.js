@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, Grid, Button, Row, Col } from 'antd';
+import { createBrowserHistory } from 'history';
 
 function Lab() {
-  const onsubmit = (e, num) => {};
+  const history = createBrowserHistory();
+  const onsubmit = (e, num) => {
+    if (num === 0) {
+      history.push('/admin/labDetails');
+      history.go();
+    }
+  };
   return (
     <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
       <Col className='gutter-row' span={6}>

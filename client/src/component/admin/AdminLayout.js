@@ -52,13 +52,17 @@ const AdminLayout = () => {
           <Sider>
             <Menu defaultSelectedKeys={['Dashboard']} mode='inline'>
               {routes &&
-                routes.map((x, idx) => (
-                  <Menu.Item key={x.name}>
-                    <NavLink id={x.path.substring(1)} to={x.layout}>
-                      {x.name}
-                    </NavLink>
-                  </Menu.Item>
-                ))}
+                routes.map((x, idx) => {
+                  if (!x.accessory) {
+                    return (
+                      <Menu.Item key={x.name}>
+                        <NavLink id={x.path.substring(1)} to={x.layout}>
+                          {x.name}
+                        </NavLink>
+                      </Menu.Item>
+                    );
+                  }
+                })}
             </Menu>
           </Sider>
           <Layout>

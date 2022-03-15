@@ -1,11 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
-import './index.css';
 import { Typography, Button } from 'antd';
 import axios from 'axios';
 
-const { Title, Paragraph, Text, Link } = Typography;
+const { Title, Paragraph } = Typography;
 
 const arr = [
   {
@@ -54,4 +52,5 @@ function LabDetails({ index = 0 }) {
     </Typography>
   );
 }
-ReactDOM.render(<LabDetails index={1} />, document.getElementById('container'));
+
+export default LabDetails;
