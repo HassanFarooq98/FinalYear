@@ -49,7 +49,7 @@ const AdminLayout = () => {
           <Avatar style={{ float: 'right' }} src='./dp.png' />
         </Header>
         <Layout>
-          <Sider>
+          <Sider style={{ height: '100vh' }}>
             <Menu defaultSelectedKeys={['Dashboard']} mode='inline'>
               {routes &&
                 routes.map((x, idx) => {
