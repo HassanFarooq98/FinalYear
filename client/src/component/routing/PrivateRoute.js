@@ -11,7 +11,6 @@ const PrivateRoute = ({
   if (isAuthenticated) return <Component />;
 
   console.log(isAuthenticated)
-  console.log("Present here")
 
   return <Navigate to="/login" />;
 };

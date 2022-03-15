@@ -1,29 +1,23 @@
-import React, {Fragment,useState,useEffect} from 'react';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link
-} from 'react-router-dom';
-import  Navbar  from './component/Layout/Navbar';
-import  Register  from './component/auth/Register';
-import  Login  from './component/auth/Login';
+import React, { Fragment, useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Navbar from './component/Layout/Navbar';
+import Register from './component/auth/Register';
+import Login from './component/auth/Login';
 import PrivateRoute from './component/routing/PrivateRoute';
 
-import  Landing  from './component/Layout/Landing';
+import Landing from './component/Layout/Landing';
 import './App.css';
 //Redux
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import store from './store';
 import setAuthToken from './utils/setAuthToken';
 import { loadUser } from './actions/auth';
 import { LOGOUT } from './actions/types';
 import AdminLayout from './component/admin/AdminLayout';
 
-
 const App = () => {
-
-  const [currentPath, setCurrentPath]=useState(window.location.pathname);
+  const currentPath = window.location.pathname;
+  console.log(currentPath);
 
   useEffect(() => {
     // check for token in LS when app first runs
@@ -41,32 +35,32 @@ const App = () => {
     });
   }, []);
 
-  return(
-  <Provider store={store}>
-    <Router>
+  return (
+    <Provider store={store}>
+      <Router>
         <Fragment>
-          {currentPath==="/"||
-           currentPath==="/login" || 
-           currentPath==="/register" ? <Navbar/> :null}
-        
-        <Routes>
-          <Route exact path="/" element={<Landing/>} />
-          <Route exact path="/register" element={<Register/>} />
-          <Route exact path="/login" element={<Login/>} />
-          <Route
-            exact path="/admin/*"
-            element={<AdminLayout/>}
-          />
-          
-        </Routes>
-      
+          {currentPath === '/' ||
+          currentPath === '/login' ||
+          currentPath === '/register' ? (
+            <Navbar />
+          ) : null}
 
+          <Routes>
+            <Route exact path='/' element={<Landing />} />
+          </Routes>
+
+          <Routes>
+            <Route exact path='/admin/*' element={<AdminLayout />} />
+          </Routes>
+
+          <Routes>
+            <Route exact path='/register' element={<Register />} />
+            <Route exact path='/login' element={<Login />} />
+          </Routes>
         </Fragment>
-      
-        </Router>
+      </Router>
     </Provider>
-);
-
-  }
+  );
+};
 
 export default App;

@@ -21,7 +21,7 @@ const Login = ({ login, isAuthenticated }) => {
   };
 
   if (isAuthenticated) {
-    return <Navigate to="/labs" />;
+    return <Navigate to="/admin/dashboard" />;
   }
 
   return (
